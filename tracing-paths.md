@@ -4,7 +4,7 @@ Tracing is when you can point to the lines of code that were executed in the ord
 
 Learn this well, your debugging & problem solving future self will thank you!
 
-PS.  In these exercises and examples you will be dealing with some difficult expressions. Don't worry about understanding them perfectly, one of the goals for these exercises is to learn how to work with code you don't fully understand!  Don't hesitate using some trial and error to find your tracing values.
+> PS.  In these exercises and examples you will be dealing with some difficult expressions. Don't worry about understanding them perfectly, one of the goals for these exercises is to learn how to work with code you don't fully understand!  Don't hesitate using some trial and error to find your tracing values.
 
 ### Index
 * tracings to study
@@ -19,6 +19,7 @@ PS.  In these exercises and examples you will be dealing with some difficult exp
     * [five](#five)
     * [six](#six)
     * [seven](#seven)
+    * [eight](#eight)
 
 ---
 
@@ -58,7 +59,7 @@ __refactored and traced__
 
   console.log("x: " + typeof x + ", " + x);
   console.log("y: " + typeof y + ", " + y);
-  console.log("EXP: ", expression+", "+truthiness+"y");
+  console.log("EXP: ", typeof expression+", "+expression+", "+truthiness+"y");
   console.log("PATH: ", path);
 }
 ```
@@ -83,7 +84,7 @@ x: undefined, y: "", path: "else"
 
 ## if else if else
 
-[on pytut](http://www.pythontutor.com/live.html#code=const%20x%20%3D%20,%20y%20%3D%20%3B%20//%20test%20out%20a%20bunch%20of%20values%0A%0Aconst%20first_expression%20%3D%20x%20%7C%7C%20y%3B%0Alet%20first_truthiness%20%3D%20Boolean%28first_expression%29%3B%0A%0Aconst%20second_expression%20%3D%20x%20!%3D%20y%3B%0Alet%20second_truthiness%20%3D%20Boolean%28second_expression%29%3B%0A%0Alet%20path%3B%0A%0Aif%20%28%20first_truthiness%20%29%20%7B%0A%20%20path%20%3D%20%22first%20if%22%3B%0A%7D%20else%20if%20%28%20second_truthiness%20%29%20%7B%0A%20%20path%20%3D%20%22second%20if%22%3B%0A%7D%20else%20%7B%0A%20%20path%20%3D%20%22else%22%3B%0A%7D%0A%0Afirst_truthiness%20%2B%3D%20%22y%22%3B%0Asecond_truthiness%20%2B%3D%20%22y%22%3B&cumulative=false&curInstr=11&heapPrimitives=nevernest&mode=display&origin=opt-live.js&py=js&rawInputLstJSON=%5B%5D&textReferences=false)
+[on pytut](http://www.pythontutor.com/live.html#code=const%20x%20%3D%20,%20y%20%3D%20%3B%20//%20test%20out%20a%20bunch%20of%20values%0A%0Aconst%20expression_1%20%3D%20x%20%7C%7C%20y%3B%0Alet%20truthiness_1%20%3D%20Boolean%28expression_1%29%3B%0A%0Aconst%20expression_2%20%3D%20x%20!%3D%20y%3B%0Alet%20truthiness_2%20%3D%20Boolean%28expression_2%29%3B%0A%0Alet%20path%3B%0A%0Aif%20%28%20truthiness_1%20%29%20%7B%0A%20%20path%20%3D%20%22first%20if%22%3B%0A%7D%20else%20if%20%28%20truthiness_2%20%29%20%7B%0A%20%20path%20%3D%20%22second%20if%22%3B%0A%7D%20else%20%7B%0A%20%20path%20%3D%20%22else%22%3B%0A%7D%0A%0Atruthiness_1%20%2B%3D%20%22y%22%3B%0Atruthiness_2%20%2B%3D%20%22y%22%3B&cumulative=false&curInstr=11&heapPrimitives=nevernest&mode=display&origin=opt-live.js&py=js&rawInputLstJSON=%5B%5D&textReferences=false)
 
 __original code__
 ```js
@@ -106,17 +107,17 @@ __refactored and traced__
 {
   const x = , y = ; // test out a bunch of values
 
-  const first_expression = x || y;
-  const first_truthiness = Boolean(first_expression);
+  const expression_1 = x || y;
+  const truthiness_1 = Boolean(expression_1);
 
-  const second_expression = x != y;
-  const second_truthiness = Boolean(second_expression);
+  const expression_2 = x != y;
+  const truthiness_2 = Boolean(expression_2);
 
   let path;
 
-  if ( first_truthiness ) {
+  if ( truthiness_1 ) {
     path = "first if";
-  } else if ( second_truthiness ) {
+  } else if ( truthiness_2 ) {
     path = "second if";
   } else {
     path = "else";
@@ -124,8 +125,8 @@ __refactored and traced__
 
   console.log("x: " + typeof x + ", " + x);
   console.log("y: " + typeof y + ", " + y);
-  console.log("FIRST EXP: ", first_expression+", "+first_truthiness+"y");
-  console.log("SECOND EXP: ", second_expression+", "+second_truthiness+"y");
+  console.log("FIRST EXP: ", typeof expression_1+", "+expression_1+", "+truthiness_1+"y");
+  console.log("SECOND EXP: ", typeof expression_2+", "+expression_2+", "+truthiness_2+"y");
   console.log("PATH: ", path);
 }
 ```
@@ -149,7 +150,7 @@ x: NaN, y: null, path: "second if"
 
 ## nested if else
 
-[on pytut](http://www.pythontutor.com/live.html#code=const%20x%20%3D%20,%20y%20%3D%20%3B%20//%20test%20out%20a%20bunch%20of%20values%0A%0Aconst%20first_expression%20%3D%20!x%20%26%26%20y%3B%0Alet%20first_truthiness%20%3D%20Boolean%28first_expression%29%3B%0A%0Aconst%20second_expression%20%3D%20!!y%20%7C%7C%20%2Bx%3B%0Alet%20second_truthiness%20%3D%20Boolean%28second_expression%29%3B%0A%0Aconst%20third_expression%20%3D%20x%20-%20y%20%7C%7C%20y%20-%20x%3B%0Alet%20third_truthiness%20%3D%20Boolean%28third_expression%29%3B%0A%0Alet%20path%3B%0A%0Aif%20%28%20first_truthiness%20%29%20%7B%0A%20%20if%20%28%20second_truthiness%20%29%20%7B%0A%20%20%20%20path%20%3D%20%22if%20if%22%3B%0A%20%20%7D%20else%20%7B%0A%20%20%20%20path%20%3D%20%22if%20else%22%3B%0A%20%20%7D%0A%7D%20else%20%7B%0A%20%20if%20%28%20third_truthiness%20%29%20%7B%0A%20%20%20%20path%20%3D%20%22else%20if%22%3B%0A%20%20%7D%20else%20%7B%0A%20%20%20%20path%20%3D%20%22else%20else%22%3B%0A%20%20%7D%0A%7D%0A%0Afirst_truthiness%20%2B%3D%20%22y%22%3B%0Asecond_truthiness%20%2B%3D%20%22y%22%3B%0Athird_truthiness%20%2B%3D%20%22y%22%3B&cumulative=false&curInstr=1&heapPrimitives=nevernest&mode=display&origin=opt-live.js&py=js&rawInputLstJSON=%5B%5D&textReferences=false)
+[on pytut](http://www.pythontutor.com/live.html#code=const%20x%20%3D%20,%20y%20%3D%20%3B%20//%20test%20out%20a%20bunch%20of%20values%0A%0Aconst%20expression_1%20%3D%20!x%20%26%26%20y%3B%0Alet%20truthiness_1%20%3D%20Boolean%28expression_1%29%3B%0A%0Aconst%20expression_2%20%3D%20!!y%20%7C%7C%20%2Bx%3B%0Alet%20truthiness_2%20%3D%20Boolean%28expression_2%29%3B%0A%0Aconst%20third_expression%20%3D%20x%20-%20y%20%7C%7C%20y%20-%20x%3B%0Alet%20truthiness_3%20%3D%20Boolean%28third_expression%29%3B%0A%0Alet%20path%3B%0A%0Aif%20%28%20truthiness_1%20%29%20%7B%0A%20%20if%20%28%20truthiness_2%20%29%20%7B%0A%20%20%20%20path%20%3D%20%22if%20if%22%3B%0A%20%20%7D%20else%20%7B%0A%20%20%20%20path%20%3D%20%22if%20else%22%3B%0A%20%20%7D%0A%7D%20else%20%7B%0A%20%20if%20%28%20truthiness_3%20%29%20%7B%0A%20%20%20%20path%20%3D%20%22else%20if%22%3B%0A%20%20%7D%20else%20%7B%0A%20%20%20%20path%20%3D%20%22else%20else%22%3B%0A%20%20%7D%0A%7D%0A%0Atruthiness_1%20%2B%3D%20%22y%22%3B%0Atruthiness_2%20%2B%3D%20%22y%22%3B%0Atruthiness_3%20%2B%3D%20%22y%22%3B&cumulative=false&curInstr=1&heapPrimitives=nevernest&mode=display&origin=opt-live.js&py=js&rawInputLstJSON=%5B%5D&textReferences=false)
 
 __original code__
 ```js
@@ -178,25 +179,25 @@ __refactored and traced__
 {
   const x = , y = ; // test out a bunch of values
 
-  const first_expression = !x && y;
-  const first_truthiness = Boolean(first_expression);
+  const expression_1 = !x && y;
+  const truthiness_1 = Boolean(expression_1);
 
-  const second_expression = !!y || +x;
-  const second_truthiness = Boolean(second_expression);
+  const expression_2 = !!y || +x;
+  const truthiness_2 = Boolean(expression_2);
 
-  const third_expression = x - y || y - x;
-  const third_truthiness = Boolean(third_expression);
+  const expression_3 = x - y || y - x;
+  const truthiness_3 = Boolean(expression_3);
 
   let path;
 
-  if ( first_truthiness ) {
-    if ( second_truthiness ) {
+  if ( truthiness_1 ) {
+    if ( truthiness_2 ) {
       path = "if if";
     } else {
       path = "if else";
     }
   } else {
-    if ( third_truthiness ) {
+    if ( truthiness_3 ) {
       path = "else if";
     } else {
       path = "else else";
@@ -205,9 +206,9 @@ __refactored and traced__
 
   console.log("x: " + typeof x + ", " + x);
   console.log("y: " + typeof y + ", " + y);
-  console.log("FIRST EXP: ", first_expression+", "+first_truthiness+"y");
-  console.log("SECOND EXP: ", second_expression+", "+second_truthiness+"y");
-  console.log("THIRD EXP: ", third_expression+", "+third_truthiness+"y");
+  console.log("FIRST EXP: ", typeof expression_1+", "+expression_1+", "+truthiness_1+"y");
+  console.log("SECOND EXP: ", typeof expression_2+", "+expression_2+", "+truthiness_2+"y");
+  console.log("THIRD EXP: ", typeof expression_3+", "+expression_3+", "+truthiness_3+"y");
   console.log("PATH: ", path);
 }
 ```
@@ -233,7 +234,7 @@ x: 1, y: "", path: "else if"
 
 ## One
 
-[on pytut]()
+[on pytut](http://www.pythontutor.com/live.html#code=const%20x%20%3D%20%3B%20//%20try%20a%20bunch%20of%20values!%0A%0Aif%20%28x%20%3D%3D%3D%20%2Bx%20%7C%7C%20x%20%3D%3D%3D%20!x%29%20%7B%0A%0A%7D%20else%20%7B%0A%0A%7D&cumulative=false&heapPrimitives=nevernest&mode=display&origin=opt-live.js&py=js&rawInputLstJSON=%5B%5D&textReferences=false)
 
 __original code__
 ```js
@@ -259,7 +260,7 @@ __refactored and traced__
 __some tracings__
 ```js
 // find 6+ tracing values
-// try to find at least 1 for each path
+// try to find at least 1 set for each path
 // or can you? some paths are unreachable!
 ```
 
@@ -270,11 +271,80 @@ __some tracings__
 
 ## Two
 
+
+[on pytut](http://www.pythontutor.com/live.html#code=const%20x%20%3D%20%3B%20//%20try%20a%20bunch%20of%20values!%0A%0Aif%20%28x%20%3D%3D%3D%20%2Bx%29%20%7B%0A%0A%7D%20else%20if%20%28x%20%3D%3D%3D%20!x%29%20%7B%0A%0A%7D%20else%20%7B%0A%0A%7D&cumulative=false&heapPrimitives=nevernest&mode=display&origin=opt-live.js&py=js&rawInputLstJSON=%5B%5D&textReferences=false)
+
+__original code__
+```js
+{
+  const x = ; // try a bunch of values!
+
+  if (x === +x) {
+
+  } else if (x === !x) {
+
+  } else {
+
+  }
+
+}
+```
+
+__refactored and traced__
+```js
+{
+
+}
+```
+
+__some tracings__
+```js
+// find 6+ tracing values
+// try to find at least 1 set for each path
+// or can you? some paths are unreachable!
+```
+
+
 [TOP](#tracing-paths)
 
 ---
 
 ## Three
+
+
+[on pytut](http://www.pythontutor.com/live.html#code=const%20x%20%3D%20,%20y%20%3D%20%3B%20//%20try%20a%20bunch%20of%20values!%0A%0Aif%20%28x%20%3D%3D%20%2Bx%29%20%7B%0A%0A%7D%20%0Aif%20%28x%20%3D%3D%20!!x%29%20%7B%0A%0A%7D%20else%20%7B%0A%0A%7D%0A&cumulative=false&curInstr=1&heapPrimitives=nevernest&mode=display&origin=opt-live.js&py=js&rawInputLstJSON=%5B%5D&textReferences=false)
+
+__original code__
+```js
+{
+  const x = , y = ; // try a bunch of values!
+
+  if (x == +x) {
+
+  } 
+  if (x == !!x) {
+
+  } else {
+
+  }
+
+}
+```
+
+__refactored and traced__
+```js
+{
+
+}
+```
+
+__some tracings__
+```js
+// find 6+ tracing values
+// try to find at least 1 set for each path
+// or can you? some paths are unreachable!
+```
+
 
 [TOP](#tracing-paths)
 
@@ -282,11 +352,88 @@ __some tracings__
 
 ## Four
 
+
+[on pytut](http://www.pythontutor.com/live.html#code=const%20x%20%3D%20,%20y%20%3D%20%3B%20//%20try%20a%20bunch%20of%20values!%0A%0Aif%20%28x%29%20%7B%0A%20%20if%20%28y%29%20%7B%0A%0A%20%20%7D%20else%20%7B%0A%20%20%20%20%0A%20%20%7D%0A%7D%20else%20%7B%0A%20%20if%20%28y%29%20%7B%0A%0A%20%20%7D%20else%20%7B%0A%20%20%20%20%0A%20%20%7D%0A%7D%0A&cumulative=false&curInstr=1&heapPrimitives=nevernest&mode=display&origin=opt-live.js&py=js&rawInputLstJSON=%5B%5D&textReferences=false)
+
+__original code__
+```js
+{
+  const x = , y = ; // try a bunch of values!
+
+  if (x) {
+    if (y) {
+
+    } else {
+      
+    }
+  } else {
+    if (y) {
+
+    } else {
+      
+    }
+  }
+
+}
+```
+
+__refactored and traced__
+```js
+{
+
+}
+```
+
+__some tracings__
+```js
+// find 6+ tracing values
+// try to find at least 1 set for each path
+// or can you? some paths are unreachable!
+```
+
+
 [TOP](#tracing-paths)
 
 ---
 
 ## Five
+
+
+[on pytut](http://www.pythontutor.com/live.html#code=const%20x%20%3D%20,%20y%20%3D%20%3B%20//%20try%20a%20bunch%20of%20values!%0A%0Aif%20%28%20!x%20%7C%7C%20!y%20%29%20%7B%0A%0A%7D%20else%20if%20%28%20!%28x%20%26%26%20y%29%20%29%20%7B%0A%0A%7D%20else%20%7B%20%0A%0A%7D&cumulative=false&curInstr=1&heapPrimitives=nevernest&mode=display&origin=opt-live.js&py=js&rawInputLstJSON=%5B%5D&textReferences=false)
+
+__original code__
+```js
+{
+  const x = , y = ; // try a bunch of values!
+
+  if ( !x || !y ) {
+
+  } else if ( !(x && y) ) {
+
+  } else { 
+  
+  }
+
+}
+```
+
+__refactored and traced__
+```js
+{
+
+}
+```
+
+__some tracings__
+```js
+// find 6+ tracing values
+// try to find at least 1 set for each path
+// or can you? some paths are unreachable!
+```
+
+> [De Morgan's Law](https://www.youtube.com/watch?v=tKnS3s8fOu4)
+
+
 
 [TOP](#tracing-paths)
 
@@ -294,15 +441,138 @@ __some tracings__
 
 ## Six
 
+
+[on pytut](http://www.pythontutor.com/live.html#code=const%20x%20%3D%20,%20y%20%3D%20%3B%20//%20try%20a%20bunch%20of%20values!%0A%0Aif%20%28x%29%20%7B%0A%20%20if%20%28y%29%20%7B%0A%0A%20%20%7D%20else%20%7B%0A%20%20%20%20%0A%20%20%7D%0A%7D%20else%20%7B%0A%20%20if%20%28x%29%20%7B%0A%0A%20%20%7D%20else%20%7B%0A%20%20%20%20%0A%20%20%7D%0A%7D%20%20&cumulative=false&curInstr=1&heapPrimitives=nevernest&mode=display&origin=opt-live.js&py=js&rawInputLstJSON=%5B%5D&textReferences=false)
+
+__original code__
+```js
+{
+  const x = , y = ; // try a bunch of values!
+
+  if (x) {
+    if (y) {
+
+    } else {
+      
+    }
+  } else {
+    if (x) {
+
+    } else {
+      
+    }
+  }  
+
+}
+```
+
+__refactored and traced__
+```js
+{
+  // can you remove on conditional statement without changing the bahavior?
+}
+```
+
+__some tracings__
+```js
+// find 6+ tracing values
+// try to find at least 1 set for each path
+// or can you? some paths are unreachable!
+```
+
+
 [TOP](#tracing-paths)
 
 ---
 
 ## Seven
 
+
+
+[on pytut](http://www.pythontutor.com/live.html#code=const%20x%20%3D%20,%20y%20%3D%20%3B%20//%20try%20a%20bunch%20of%20values!%0A%0Aif%20%28x%20%7C%7C%20y%29%20%7B%0A%20%20if%20%28x%20!%3D%3D%20y%29%20%7B%0A%0A%20%20%7D%0A%7D%20else%20if%20%28x%20%26%26%20y%29%20%7B%0A%20%20if%20%28x%20!%3D%3D%20y%29%20%7B%0A%20%20%20%20%0A%20%20%7D%0A%7D%20else%20%7B%0A%20%20if%20%28x%20!%3D%3D%20y%29%20%7B%0A%20%20%20%20%0A%20%20%7D%0A%7D&cumulative=false&curInstr=1&heapPrimitives=nevernest&mode=display&origin=opt-live.js&py=js&rawInputLstJSON=%5B%5D&textReferences=false)
+
+__original code__
+```js
+{
+  const x = , y = ; // try a bunch of values!
+
+  if (x || y) {
+    if (x !== y) {
+
+    }
+  } else if (x && y) {
+    if (x !== y) {
+      
+    }
+  } else {
+    if (x !== y) {
+      
+    }
+  }
+
+}
+```
+
+__refactored and traced__
+```js
+{
+
+}
+```
+
+__some tracings__
+```js
+// find 6+ tracing values
+// try to find at least 1 set for each path
+// or can you? some paths are unreachable!
+```
+
+
 [TOP](#tracing-paths)
 
+---
 
+
+## Eight
+
+
+
+[on pytut](http://www.pythontutor.com/live.html#code=const%20x%20%3D%20,%20y%20%3D%20%3B%20//%20try%20a%20bunch%20of%20values!%0A%0Aif%20%28x%20%7C%7C%20y%29%20%7B%0A%20%20if%20%28x%20!%3D%3D%20y%29%20%7B%0A%0A%20%20%7D%0A%7D%20else%20if%20%28x%20%26%26%20y%29%20%7B%0A%20%20if%20%28x%20!%3D%3D%20y%29%20%7B%0A%20%20%20%20%0A%20%20%7D%0A%7D%20else%20%7B%0A%20%20if%20%28x%20!%3D%3D%20y%29%20%7B%0A%20%20%20%20%0A%20%20%7D%0A%7D&cumulative=false&curInstr=1&heapPrimitives=nevernest&mode=display&origin=opt-live.js&py=js&rawInputLstJSON=%5B%5D&textReferences=false)
+
+__original code__
+```js
+{
+  const x = , y = ; // try a bunch of values!
+
+  if (x !== y) {
+    if (x || y) {
+
+    } else if (x && y) {
+
+    } else {
+
+    }
+  }
+
+}
+```
+
+__refactored and traced__
+```js
+{
+
+}
+```
+
+__some tracings__
+```js
+// find 6+ tracing values
+// try to find at least 1 set for each path
+// or can you? some paths are unreachable!
+```
+
+
+[TOP](#tracing-paths)
 
 
 ___
